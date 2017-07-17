@@ -1,0 +1,15 @@
+// Поместите параметры в этот файл, чтобы перезаписать параметры по умолчанию и пользовательские параметры.
+{
+    "typescript.tsdk": "node_modules/typescript/lib",
+    // format
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": false,
+    "html.format.enable": false,
+    "json.format.enable": false,
+    // view
+    "editor.renderIndentGuides": true,
+    "editor.minimap.enabled": true,
+    // edit
+    "editor.tabSize": 2
+}

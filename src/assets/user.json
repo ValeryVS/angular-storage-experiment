@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "name": "Иван",
+    "middleName": "Петрович",
+    "lastName": "Иванов",
+    "role": "admin",
+    "organizationId": 1
+  },
+  {
+    "id": 2,
+    "name": "Пётр",
+    "middleName": "Владимирович",
+    "lastName": "Петров",
+    "role": "user",
+    "organizationId": 2
+  }
+]

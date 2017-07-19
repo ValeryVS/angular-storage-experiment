@@ -1,0 +1,24 @@
+<ng-container *ngIf="currentUser$ | async; let currentUser">
+  <p>Здравствуйте, {{ currentUser.name }}</p>
+</ng-container>
+
+<ng-container *ngIf="users$ | async; let users">
+  <table class="table table-striped">
+    <thead class="thead-default">
+      <th>ФИО</th>
+      <th>Роль</th>
+      <th>Организация</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>
+          {{ user.lastName }}
+          {{ user.middleName }}
+          {{ user.name }}
+        </td>
+        <td>{{ user.role }}</td>
+        <td>{{ user.organization.name }}</td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>

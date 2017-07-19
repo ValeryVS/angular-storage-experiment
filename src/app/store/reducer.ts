@@ -1,12 +1,7 @@
-import { compose } from '@ngrx/core/compose';
-import { ActionReducer } from '@ngrx/store';
-import { combineReducers } from '@ngrx/store';
-import { storeFreeze } from 'ngrx-store-freeze';
-import { createSelector } from 'reselect';
+import { ActionReducer, ActionReducerMap } from '@ngrx/store';
 
 import { environment } from '../../environments/environment';
 
-import { ActionReducerMap } from './common/reducers/action-reducer-map';
 import * as fromOrganization from './organization/reducers';
 import * as fromUser from './user/reducers';
 
@@ -25,14 +20,17 @@ export const reducers: ActionReducerMap<RootState> = {
   user: fromUser.createReducer(USER),
 };
 
-const developmentReducer: ActionReducer<RootState> = compose(storeFreeze, combineReducers)(reducers);
-const productionReducer: ActionReducer<RootState> = combineReducers(reducers);
+export function logger(reducer: ActionReducer<RootState>): ActionReducer<any, any> {
+  return (state: RootState, action: any): RootState => {
+    // tslint:disable-next-line:no-console
+    console.log('state', state);
+    // tslint:disable-next-line:no-console
+    console.log('action', action);
 
-export function reducer(state: any, action: any) {
-  if (environment.production) {
-    return productionReducer(state, action);
-  } else {
-    return developmentReducer(state, action);
-  }
+    return reducer(state, action);
+  };
 }
 
+export const metaReducers: Array<ActionReducer<any, any>> = !environment.production
+  ? [logger]
+  : [];

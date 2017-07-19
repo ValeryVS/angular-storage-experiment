@@ -1,5 +1,4 @@
-import { Action } from '@ngrx/store';
-import { createSelector } from 'reselect';
+import { Action, createSelector, MemoizedSelector } from '@ngrx/store';
 
 import { GetAllCompleteAction, getFullActionName } from '../actions';
 
@@ -57,7 +56,7 @@ export function reducerFactory<T>(
 export type SelectorFactory<RootState> = <K extends keyof RootState, Result = any>(
   storeName: K,
   selector: (state: RootState[K]) => Result,
-) => Reselect.OutputSelector<RootState, Result, (res: RootState[K]) => Result>;
+) => MemoizedSelector<RootState, Result>;
 
 export function selectorFactoryGeneric<RootState, K extends keyof RootState, Result = any>(
   storeName: K,

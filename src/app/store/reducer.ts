@@ -15,10 +15,9 @@ export interface RootState {
   user: fromUser.State;
 }
 
-export const reducers: ActionReducerMap<RootState> = {
-  organization: fromOrganization.createReducer(ORGANIZATION),
-  user: fromUser.createReducer(USER),
-};
+export const reducers = {} as ActionReducerMap<RootState>;
+reducers.organization = fromOrganization.createReducer(ORGANIZATION);
+reducers.user = fromUser.createReducer(USER);
 
 export function logger(reducer: ActionReducer<RootState>): ActionReducer<any, any> {
   return (state: RootState, action: any): RootState => {

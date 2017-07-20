@@ -14,7 +14,7 @@ import { AppComponent } from './core/components/app/app.component';
 
 import { environment } from '../environments/environment';
 import { OrganizationService } from './store/organization/services';
-import { metaReducers, reducers } from './store/reducer';
+import { metaReducers, reducerProvider, reducerToken } from './store/reducer';
 import { UserService } from './store/user/services';
 
 @NgModule({
@@ -24,7 +24,7 @@ import { UserService } from './store/user/services';
     HttpModule,
 
     NgbModule.forRoot(),
-    StoreModule.forRoot(reducers, { metaReducers }),
+    StoreModule.forRoot(reducerToken, { metaReducers }),
     EffectsModule.forRoot([OrganizationService, UserService]),
     !environment.production ? StoreDevtoolsModule.instrument({ maxAge: 50 }) : [],
 
@@ -34,6 +34,7 @@ import { UserService } from './store/user/services';
   providers: [
     OrganizationService,
     UserService,
+    reducerProvider,
   ],
   bootstrap: [AppComponent],
 })

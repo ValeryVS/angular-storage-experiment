@@ -30,6 +30,7 @@ export interface ActionFactory<T> {
 
 export function actionFactoryGeneric<T>(actionName: GET_ALL, storeName: keyof T): GetAllAction;
 export function actionFactoryGeneric<T, P>(actionName: GET_ALL_COMPLETE, storeName: keyof T, payload: P): GetAllCompleteAction;
+export function actionFactoryGeneric<T, P>(actionName: string, storeName: keyof T, payload?: P): GenericAction<any>;
 export function actionFactoryGeneric<T, P>(actionName: string, storeName: keyof T, payload?: P): GenericAction<any> {
   return {
     type: getFullActionName(actionName, storeName),

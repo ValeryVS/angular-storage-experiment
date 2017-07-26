@@ -22,6 +22,7 @@ export const reducers: ActionReducerMap<RootState> = {
 };
 
 export const reducerToken = new InjectionToken<ActionReducerMap<RootState>>('Registered Reducers');
+Object.assign(reducerToken, reducers);
 
 export const reducerProvider = [
   { provide: reducerToken, useValue: reducers },
